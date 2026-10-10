@@ -1,0 +1,11 @@
+"Create a responsive web dashboard for an agricultural Smart Water Management App. The vibe should be modern, clean, and sustainable, utilizing an earthy color palette of leafy greens and deep water blues with a sans-serif font.
+Please include the following layout components:
+
+A left sidebar with navigation links: Dashboard, AI Insights, Crop Profiles, and Settings.
+
+A top row of four minimal metric cards displaying: Soil Moisture (%), Water Tank Level (Liters), Pipeline Pressure (PSI), and Flow Rate (L/min).
+
+A main central panel titled 'AI Analysis Report' containing a text block for automated insights, alongside a prominent 'Automated Water Supply: ON/OFF' toggle switch.
+
+A full-width alert banner styled with a red warning background at the top of the dashboard to indicate 'Pipeline Issue Detected - Check Water Flow'.
+Keep the overall UI clean with soft rounded borders on the cards and distinct visual separation between the metrics and the AI report."
