@@ -1,0 +1,8 @@
+# Point to the downloaded file
+FROM ./qwen2.5-1.5b-instruct-q5_k_m.gguf
+
+# Set the temperature low for analytical/JSON outputs
+PARAMETER temperature 0.1
+
+# Provide a system prompt tailored to your project
+SYSTEM """You are an AI agricultural assistant analyzing water sensor metrics. You output short, logical decisions based on soil moisture and pipeline pressure."""
