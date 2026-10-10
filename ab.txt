@@ -1,11 +1,47 @@
-"Create a responsive web dashboard for an agricultural Smart Water Management App. The vibe should be modern, clean, and sustainable, utilizing an earthy color palette of leafy greens and deep water blues with a sans-serif font.
-Please include the following layout components:
+Act as an expert Full-Stack React Developer. I need to build the frontend for a "Smart Water Management App" hackathon project. The backend is running on Python FastAPI at `http://localhost:8000`. 
 
-A left sidebar with navigation links: Dashboard, AI Insights, Crop Profiles, and Settings.
+Please generate the complete project structure and the necessary React code using Vite and Tailwind CSS. 
 
-A top row of four minimal metric cards displaying: Soil Moisture (%), Water Tank Level (Liters), Pipeline Pressure (PSI), and Flow Rate (L/min).
+### Design & Theme Requirements:
+- Vibe: Modern, clean, and sustainable.
+- Color Palette: Earthy emerald greens, deep water blues, clean white card backgrounds, and a light gray main background (`bg-gray-50`).
+- Font: Clean sans-serif.
+- Layout: A responsive dashboard with a Left Sidebar (fixed) and a Main Content Area.
 
-A main central panel titled 'AI Analysis Report' containing a text block for automated insights, alongside a prominent 'Automated Water Supply: ON/OFF' toggle switch.
+### Project Structure to Generate:
+Create a standard React `src` folder structure:
+- `/components` (Sidebar, MetricCard, AiReportPanel, AlertBanner)
+- `/pages` (DashboardView)
+- `/services` (api.js for fetching from FastAPI)
+- `App.jsx` and `main.jsx`
 
-A full-width alert banner styled with a red warning background at the top of the dashboard to indicate 'Pipeline Issue Detected - Check Water Flow'.
-Keep the overall UI clean with soft rounded borders on the cards and distinct visual separation between the metrics and the AI report."
+### Component Details:
+1. **Left Sidebar:**
+   - Navigation links: Dashboard, AI Insights, Crop Profiles, Settings.
+   - Styling: Deep water blue background (`bg-blue-900`) with white text.
+
+2. **Alert Banner (Conditional Rendering):**
+   - Full-width banner at the very top of the main content area.
+   - Styling: Red warning background (`bg-red-500`) with white bold text.
+   - Text: "⚠️ Pipeline Issue Detected - Check Water Flow immediately!"
+   - It should show up if a `pipelineIssue` boolean prop is true.
+
+3. **Top Metric Cards (Grid of 4):**
+   - Clean white cards with soft rounded borders and a slight shadow.
+   - Card 1: Soil Moisture (%) - Icon: Leaf/Drop
+   - Card 2: Water Tank Level (Liters) - Icon: Container
+   - Card 3: Pipeline Pressure (PSI) - Icon: Gauge
+   - Card 4: Flow Rate (L/min) - Icon: Waves
+
+4. **AI Analysis Report Panel (Central Panel):**
+   - A large, prominent section below the metric cards.
+   - Title: "Local AI Analysis Report"
+   - A text block that displays string insights from our local Qwen LLM (e.g., "Soil moisture is critically low at 20%. Turning on the automated pump for 45 minutes.").
+   - A large toggle switch labeled: "Automated Water Supply: ON / OFF". The toggle should visually indicate green for ON and gray for OFF.
+
+### Functionality & State:
+- In `DashboardView.jsx`, use React `useEffect` and `useState` to set up a polling mechanism (e.g., every 5 seconds) that fetches data from the mock FastAPI backend endpoint `/api/telemetry`.
+- The state should hold the 4 metrics, the AI string report, the pump status (boolean), and the pipeline issue status (boolean).
+- Use dummy placeholder data for the initial state so the dashboard looks populated even before the backend is connected.
+
+Please output the code for `App.jsx`, `DashboardView.jsx`, and the reusable components.
