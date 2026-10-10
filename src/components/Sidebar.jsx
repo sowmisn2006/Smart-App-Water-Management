@@ -1,4 +1,5 @@
-import { LayoutDashboard, BrainCircuit, Droplet, Settings } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
+import { Droplet, Activity, Sprout, Settings } from 'lucide-react';
 
 export default function Sidebar() {
   return (
@@ -11,10 +12,10 @@ export default function Sidebar() {
         <p className="text-blue-300 text-xs mt-1 font-medium tracking-wide">MANAGEMENT DASHBOARD</p>
       </div>
       <nav className="flex-1 p-4 space-y-2">
-        <NavItem icon={<LayoutDashboard size={20} />} label="Dashboard" active />
-        <NavItem icon={<BrainCircuit size={20} />} label="AI Insights" />
-        <NavItem icon={<Droplet size={20} />} label="Crop Profiles" />
-        <NavItem icon={<Settings size={20} />} label="Settings" />
+        <NavItem to="/" icon={<Activity size={20} />} label="Dashboard" exact />
+        <NavItem to="/ai-insights" icon={<Activity size={20} />} label="AI Insights" />
+        <NavItem to="/crop-profiles" icon={<Sprout size={20} />} label="Crop Profiles" />
+        <NavItem to="/settings" icon={<Settings size={20} />} label="Settings" />
       </nav>
       <div className="p-4 border-t border-blue-800 text-sm text-blue-400 bg-blue-950/30">
         <div className="flex items-center gap-2">
@@ -29,18 +30,21 @@ export default function Sidebar() {
   );
 }
 
-function NavItem({ icon, label, active }) {
+function NavItem({ to, icon, label, exact }) {
   return (
-    <a
-      href="#"
-      className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${
-        active 
-          ? 'bg-blue-800/80 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.15)] border border-blue-700/50' 
-          : 'text-blue-200 hover:bg-blue-800/50 hover:text-white border border-transparent'
-      }`}
+    <NavLink
+      to={to}
+      end={exact}
+      className={({ isActive }) =>
+        `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 border-l-4 ${
+          isActive 
+            ? 'bg-blue-800/80 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.15)] border-emerald-500' 
+            : 'text-blue-200 hover:bg-blue-800/50 hover:text-white border-transparent'
+        }`
+      }
     >
       {icon}
       <span className="font-medium">{label}</span>
-    </a>
+    </NavLink>
   );
 }
